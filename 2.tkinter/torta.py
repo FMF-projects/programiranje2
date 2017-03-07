@@ -12,13 +12,14 @@ class Torta():
         narisi_gumb.grid(row=0, column=1)
         
         #tortni diagram
-        self.platno = Canvas(master, width=300, height=300)
+        self.platno = Canvas(master, width=250, height=250)
         self.platno.grid(row=1, column=0)
         
     
     def narisi(self):
         '''nariše tortni diagram'''     
-        barve = ['yellow','red','orange','blue','green','cyan','black','gray']
+        barve = ['yellow','red','orange','blue','green','cyan',
+                'black','gray', 'magenta']
         podatki = self.vnos.get()
         podatki = podatki.split()
         vsota = sum(list(map(int, podatki)))
@@ -27,9 +28,9 @@ class Torta():
         zacetek = 0
         for i in podatki:
             delez = (360 * int(i)) / vsota
-            izsek = self.platno.create_arc(start=zacetek, 
-                extent=delez, fill=barve[b])
-            zacetek = delez
+            izsek = self.platno.create_arc(40, 40, 240, 240, 
+                    start=zacetek, extent=delez, fill=barve[b])
+            zacetek += delez
             
             if b != (len(barve) - 1):
                 b += 1
