@@ -28,7 +28,7 @@ class Krozenje():
     def premakni(self):
         '''izračuna novo stanje elementov'''
         self.kot_zemlja += 0.1
-        self.kot_luna += 0.2
+        self.kot_luna += 0.8
             
         
         x_zemlja = 300 + 200 * cos(self.kot_zemlja)
