@@ -13,7 +13,7 @@ class Ura():
 
         #vstavimo številke
         kot = 0
-        stevila = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2] #zamenjamo cos in sin in pustimo zanko od 1 do 12
+        stevila = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2]
         for i in stevila:
             x = 130 * cos(radians(kot))
             y = 130 * sin(radians(kot))
@@ -24,6 +24,13 @@ class Ura():
         self.sek = self.platno.create_line(150, 150, 150, 10)
         self.min = self.platno.create_line(150, 150, 150, 10, width=3)
         self.ura = self.platno.create_line(150, 150, 150, 10, width=5)
+        
+        def premakni(self):
+            '''premakne kazalec na nov položaj'''
+            #trenutne koordinate
+            x, y, z, w = self.platno.coords(self.sek)
+            kot = radians(6)
+            self.platno.coords(self.sek, 150, 150, z + cos(kot), w + sin(kot))
 
 
 root = Tk()
