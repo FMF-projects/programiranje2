@@ -5,6 +5,8 @@ from datetime import *
 class Ura():
 
     def __init__(self, master):
+    
+        self.zacetni_cas = datetime.now()
 
         self.platno = Canvas(master, width=300, height=300)
         self.platno.grid(row=0, column=0)
@@ -22,15 +24,29 @@ class Ura():
 
         #vstavimo kazalce
         self.sek = self.platno.create_line(150, 150, 150, 10)
-        self.min = self.platno.create_line(150, 150, 150, 10, width=3)
-        self.ura = self.platno.create_line(150, 150, 150, 10, width=5)
+        self.min = self.platno.create_line(150, 150, 150, 40, width=3)
+        self.ura = self.platno.create_line(150, 150, 150, 80, width=5)
         
-        def premakni(self):
-            '''premakne kazalec na nov položaj'''
-            #trenutne koordinate
-            x, y, z, w = self.platno.coords(self.sek)
-            kot = radians(6)
-            self.platno.coords(self.sek, 150, 150, z + cos(kot), w + sin(kot))
+        self.animacija()
+        
+    def premakni(self):
+        '''premakne kazalec na nov položaj'''
+        #trenutne koordinate
+        x, y, z, w = self.platno.coords(self.sek)
+        print(x, y, z, w)
+        kot = radians(6)
+        self.platno.coords(self.sek, 150, 150, z + cos(kot), w + sin(kot))
+            
+        
+    def animacija(self):
+        zdaj = datetime.now()
+        print(zdaj)
+        if zdaj - self.zacetni_cas == 1:
+            self.sek.premakni()
+            self.zacetni_cas = zdaj
+        else:
+            self.platno.after(50, self.animacija) 
+        
 
 
 root = Tk()
