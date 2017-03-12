@@ -27,26 +27,21 @@ class Ura():
         self.min = self.platno.create_line(150, 150, 150, 40, width=3)
         self.ura = self.platno.create_line(150, 150, 150, 80, width=5)
         
-        self.animacija()
+        self.kot = 0
+        
+        self.premakni()
         
     def premakni(self):
         '''premakne kazalec na nov položaj'''
-        #trenutne koordinate
-        x, y, z, w = self.platno.coords(self.sek)
-        print(x, y, z, w)
-        kot = radians(6)
-        self.platno.coords(self.sek, 150, 150, z + cos(kot), w + sin(kot))
-            
+        self.kot += 6
+        x = 150 + 140 * cos(radians(self.kot))
+        y = 150 + 140 * sin(radians(self.kot))
+        #sekunde = self.zacetni_cas.second()
+        #trenutni = datetime.now()
+        #if trenutni.second() - sekunde == 1:
+        self.platno.coords(self.sek, 150, 150, x, y)
         
-    def animacija(self):
-        zdaj = datetime.now()
-        print(zdaj)
-        if zdaj - self.zacetni_cas == 1:
-            self.sek.premakni()
-            self.zacetni_cas = zdaj
-        else:
-            self.platno.after(50, self.animacija) 
-        
+        self.platno.after(1000, self.premakni)        
 
 
 root = Tk()
