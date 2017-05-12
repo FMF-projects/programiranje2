@@ -4,6 +4,7 @@ public class Collatzovo_zaporedje {
 	public static void main(String[] args){
 		System.out.println(dolzina(12));
 		System.out.println(najvecji_clen(6));
+		izpis(6);
 	}
 	
 	public static int dolzina(int n){
@@ -45,4 +46,23 @@ public class Collatzovo_zaporedje {
 		}
 		return najvecji;
 	}
+	
+	public static void izpis(int n){
+		if (n==1){
+			System.out.println(n);
+		}
+	
+		System.out.println(n);
+		
+		while (n!=1){
+			if (n % 2 == 0){ 
+				n = n / 2;
+				System.out.println(n);
+			}else{
+				n = n * 3 + 1;
+				System.out.println(n);
+				}
+		}
+	}
 }
+
