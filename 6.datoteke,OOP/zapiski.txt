@@ -1,0 +1,46 @@
+DATOTEKE
+BufferedReader vhod = new BufferedReader(new FileReader(vhodna));
+PrintWriter izhod = new PrintWriter(new FileWriter(izhodna));
+
+while (vhod.ready()){
+	String vrstica = vhod.readLine().trim();
+	if (vrstica.isEmpty()) continue;
+	String[] besede = vrstica.split(" +"); //+ èe imamo veè presledkov
+	...
+}
+
+vhod.close();
+izhod.close();
+
+vhod.readLine().trim().toLowerCase()
+
+ODSTRANJEVANJE LOÈIL PRI BESEDAH
+while (vhod.ready()){
+	String vrstica = vhod.readLine().trim().toLowerCase();
+	if (vrstica.isEmpty()) continue;
+	StringTokenizer st = new StringTokenizer(vrstica, " .,!?()[]-\"'+");
+	while(st.hasMoreTokens()){
+		String beseda = st.nextToken();
+		...
+	}
+
+MNOZICA
+Set<String> mn = new HashSet(ali TreeSet)<String>();
+
+.add()
+.contains()
+
+
+SLOVAR
+Map<String, Integer> slovar = new HashMap(ali TreeMap)<String, Integer>();
+
+.containsKey(...)
+.get(...) ---vrne null, èe kljuèa ni v slovarju
+.put(...,...)
+
+ZAOKROŽEVANJE 
+(vstavimo v funkcijo, kjer želimo uporabiti)
+DecimalFormatSymbols sym = new DecimalFormatSymbols();
+sym.setDecimalSeparator('.');
+DecimalFormat df = new DecimalFormat("0.00", sym);
+df.setRoundingMode(RoundingMode.HALF_UP);
