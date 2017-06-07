@@ -1,0 +1,5 @@
+org.apache.httpcomponents   fluent-hc
+com.fasterxml.jackson.core  jackson-databind
+
+TODO
+odjava ob zapiranju okna
